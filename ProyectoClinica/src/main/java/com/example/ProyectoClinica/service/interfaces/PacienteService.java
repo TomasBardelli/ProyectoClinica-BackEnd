@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface PacienteService {
     List<PacienteDTO> buscarTodos();
     PacienteDTO buscarPorId(Long id);
-    String crearOdontologo(Paciente paciente);
-    String updateOdontologo(Paciente paciente);
-    String deleteOdontologo(Long id);
+    String guardarPaciente(PacienteDTO paciente);
+    String updatePaciente(PacienteDTO paciente);
+    String deletePaciente(Long id);
 }

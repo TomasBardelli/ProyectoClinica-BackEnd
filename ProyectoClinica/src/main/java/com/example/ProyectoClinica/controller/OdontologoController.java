@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -25,14 +26,19 @@ public class OdontologoController {
         return odontologoService.buscarPorId(id);
     }
 
+    @GetMapping("/list")
+    public List<OdontologoDTO> listOdontologos(){
+        return odontologoService.buscarTodos();
+    }
+
     @PostMapping("/add")
-    public ResponseEntity<Odontologo> agregarOdontologo(@RequestBody Odontologo odontologo){
-        odontologoService.crearOdontologo(odontologo);
+    public ResponseEntity<OdontologoDTO> agregarOdontologo(@RequestBody OdontologoDTO odontologo){
+        odontologoService.guardarOdontologo(odontologo);
         return ResponseEntity.ok(null);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Odontologo> updatearOdontologo(@RequestBody Odontologo odontologo){
+    public ResponseEntity<OdontologoDTO> updatearOdontologo(@RequestBody OdontologoDTO odontologo){
         odontologoService.updateOdontologo(odontologo);
         return ResponseEntity.ok(null);
     }

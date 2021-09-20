@@ -14,7 +14,7 @@ public class PacienteDTO {
     private Long id;
     private String apellido;
     private String nombre;
-    private Domicilio domicilio;
+    //private Domicilio domicilio;
     private String email;
     private String dni;
     private LocalDate fechaIngreso;
@@ -23,7 +23,7 @@ public class PacienteDTO {
         this.id=paciente.getId();
         this.apellido= paciente.getApellido();
         this.nombre = paciente.getNombre();
-        this.domicilio= paciente.getDomicilio();
+        //this.domicilio= paciente.getDomicilio();
         this.email=paciente.getEmail();
         this.dni=paciente.getDni();
         this.fechaIngreso=paciente.getFechaIngreso();

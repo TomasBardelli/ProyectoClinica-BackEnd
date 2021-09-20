@@ -34,22 +34,23 @@ public class OdontologoServiceImp implements OdontologoService {
 
     @Override
     public OdontologoDTO buscarPorId(Long id) {
-        Odontologo odontologo = this.odontologoRepository.getById(id);
-        OdontologoDTO response = modelMapper.map(odontologo,OdontologoDTO.class);
-        return response;
+        Optional<Odontologo> found = odontologoRepository.findById(id);
+        return objectMapper.convertValue(found, OdontologoDTO.class);
     }
 
     @Override
-    public String crearOdontologo(Odontologo odontologo) {
-        odontologoRepository.save(odontologo);
+    public String guardarOdontologo(OdontologoDTO odontologo) {
+        Odontologo odontologo1 = objectMapper.convertValue(odontologo, Odontologo.class);
+        odontologoRepository.save(odontologo1);
         return "Se creo odontologo con id: "+ odontologo.getId();
     }
 
     @Override
-    public String updateOdontologo(Odontologo odontologo) {
+    public String updateOdontologo(OdontologoDTO odontologo) {
         if (odontologoRepository.findById(odontologo.getId()).isPresent()){
-            odontologoRepository.save(odontologo);
-            return "Se modifico el odontologo con id: "+ odontologo.getId();
+            Odontologo odontologo1 = objectMapper.convertValue(odontologo, Odontologo.class);
+            odontologoRepository.save(odontologo1);
+            return "Se modifico el odontologo con id: "+ odontologo1.getId();
         }
         else {
             return "No se encontro el odontologo con el ID ingresado";

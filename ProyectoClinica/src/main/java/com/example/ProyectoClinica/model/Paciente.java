@@ -1,5 +1,6 @@
 package com.example.ProyectoClinica.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +20,7 @@ public class Paciente {
     private Long id;
     private String apellido;
     private String nombre;
-    private Domicilio domicilio;
+    //private Domicilio domicilio;
     private String email;
     private String dni;
     private LocalDate fechaIngreso;

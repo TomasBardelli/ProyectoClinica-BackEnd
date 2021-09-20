@@ -37,21 +37,22 @@ public class PacienteServiceImp implements PacienteService {
 
     @Override
     public PacienteDTO buscarPorId(Long id) {
-        Paciente paciente = this.pacienteRepository.getById(id);
-        PacienteDTO response = modelMapper.map(paciente,PacienteDTO.class);
-        return response;
+        Optional<Paciente> found = pacienteRepository.findById(id);
+        return objectMapper.convertValue(found, PacienteDTO.class);
     }
 
     @Override
-    public String crearOdontologo(Paciente paciente) {
-        pacienteRepository.save(paciente);
+    public String guardarPaciente(PacienteDTO paciente) {
+        Paciente paciente1 = objectMapper.convertValue(paciente,Paciente.class);
+        pacienteRepository.save(paciente1);
         return "Se creo paciente con id: "+paciente.getId();
     }
 
     @Override
-    public String updateOdontologo(Paciente paciente) {
+    public String updatePaciente(PacienteDTO paciente) {
         if (pacienteRepository.findById(paciente.getId()).isPresent()){
-            pacienteRepository.save(paciente);
+            Paciente paciente1 = objectMapper.convertValue(paciente,Paciente.class);
+            pacienteRepository.save(paciente1);
             return "Se modifico el paciente con id: "+ paciente.getId();
         }
         else {
@@ -60,7 +61,7 @@ public class PacienteServiceImp implements PacienteService {
     }
 
     @Override
-    public String deleteOdontologo(Long id) {
+    public String deletePaciente(Long id) {
         if (pacienteRepository.findById(id).isPresent()){
             pacienteRepository.deleteById(id);
             return "Se elimino el paciente con el id: "+ id;

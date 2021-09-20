@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface OdontologoService {
     List<OdontologoDTO> buscarTodos();
     OdontologoDTO buscarPorId(Long id);
-    String crearOdontologo(Odontologo odontologo);
-    String updateOdontologo(Odontologo odontologo);
+    String guardarOdontologo(OdontologoDTO odontologo);
+    String updateOdontologo(OdontologoDTO odontologo);
     String deleteOdontologo(Long id);
 }
