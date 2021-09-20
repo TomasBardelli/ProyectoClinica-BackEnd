@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,7 +21,7 @@ public class Odontologo {
     private String nombre;
     private String matricula;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Paciente> pacientes;
+    @OneToMany(mappedBy = "odontologo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Paciente> pacientes;
 
 }

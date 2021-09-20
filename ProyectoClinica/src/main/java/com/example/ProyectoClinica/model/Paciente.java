@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,8 +24,9 @@ public class Paciente {
     private String dni;
     private LocalDate fechaIngreso;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @OrderBy("name ASC")
-    private Set<Odontologo> odontologos;
+
+    @ManyToOne
+    @JoinColumn(name = "odontologo_id")
+    private Odontologo odontologo;
 
 }

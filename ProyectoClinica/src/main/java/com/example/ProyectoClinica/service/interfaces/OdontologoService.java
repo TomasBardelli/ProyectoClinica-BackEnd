@@ -1,14 +1,15 @@
 package com.example.ProyectoClinica.service.interfaces;
 
 import com.example.ProyectoClinica.model.DTO.OdontologoDTO;
+import com.example.ProyectoClinica.model.Odontologo;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface OdontologoService {
     List<OdontologoDTO> buscarTodos();
-    Optional<OdontologoDTO> buscarPorId(Long id);
-    OdontologoDTO crearOdontologo(OdontologoDTO odontologo);
-    OdontologoDTO updateOdontologo(OdontologoDTO odontologo);
-    void deleteOdontologo(Long id);
+    OdontologoDTO buscarPorId(Long id);
+    String crearOdontologo(Odontologo odontologo);
+    String updateOdontologo(Odontologo odontologo);
+    String deleteOdontologo(Long id);
 }
