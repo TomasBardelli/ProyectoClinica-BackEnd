@@ -17,7 +17,7 @@ public class PacienteDTO {
     //private Domicilio domicilio;
     private String email;
     private String dni;
-    private LocalDate fechaIngreso;
+    //private LocalDate fechaIngreso;
 
     public PacienteDTO (Paciente paciente){
         this.id=paciente.getId();
@@ -26,7 +26,7 @@ public class PacienteDTO {
         //this.domicilio= paciente.getDomicilio();
         this.email=paciente.getEmail();
         this.dni=paciente.getDni();
-        this.fechaIngreso=paciente.getFechaIngreso();
+        //this.fechaIngreso=paciente.getFechaIngreso();
     }
     public PacienteDTO (){
 

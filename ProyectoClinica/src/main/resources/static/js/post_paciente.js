@@ -5,7 +5,7 @@ $(document).ready(function() {
         let formaData = {
             nombre: $("#nombre").val(),
             apellido: $("#apellido").val(),
-            mail: $("#mail").val(),
+            email: $("#email").val(),
             dni: $("#dni").val()
         }
         $.ajax({
@@ -38,7 +38,7 @@ $(document).ready(function() {
     function resetUploadForm(){
         $("#nombre").val("");
         $("#apellido").val("");
-        $("#mail").val("");
+        $("#email").val("");
         $("#dni").val("");
     }
 

@@ -22,7 +22,7 @@ public class Paciente {
     private String nombre;
     private String email;
     private String dni;
-    private LocalDate fechaIngreso;
+    //private LocalDate fechaIngreso;
 
 
     @ManyToOne

@@ -4,7 +4,7 @@ $(document).ready(function(){
             type : "GET",
             url : "/pacientes",
             success: function(response){
-              $.each(response, (i, odontologo) => {
+              $.each(response, (i, paciente) => {
 
 
                 let get_More_Info_Btn = '<button' +
@@ -18,7 +18,7 @@ $(document).ready(function(){
                           '<td>' + get_More_Info_Btn + '</td>' +
                           '<td class=\"td_first_name\">' + paciente.nombre.toUpperCase() + '</td>' +
                           '<td class=\"td_last_name\">' + paciente.apellido + '</td>' +
-                          '<td class=\"td_mail\">' + paciente.mail + '</td>' +
+                          '<td class=\"td_email\">' + paciente.email + '</td>' +
                           '<td class=\"td_dni\">' + paciente.dni + '</td>' +
                           '</tr>';
                 $('#pacienteTable tbody').append(pacienteRow);

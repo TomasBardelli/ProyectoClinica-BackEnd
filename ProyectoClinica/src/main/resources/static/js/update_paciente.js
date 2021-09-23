@@ -8,7 +8,7 @@ $(document).ready(function(){
             id: $("#paciente_id").val(),
             nombre : $("#nombre").val(),
             apellido :  $("#apellido").val(),
-            mail: $("#mail").val(),
+            mail: $("#email").val(),
             dni: $("#dni").val(),
         }
 
@@ -30,7 +30,7 @@ $(document).ready(function(){
 
                     $("#tr_" + pacienteId + " td.td_first_name").text(paciente.nombre.toUpperCase());
                     $("#tr_" + pacienteId + " td.td_last_name").text(paciente.apellido.toUpperCase());
-                    $("#tr_" + pacienteId + " td.td_mail").text(paciente.mail);
+                    $("#tr_" + pacienteId + " td.td_email").text(paciente.email);
                     $("#tr_" + pacienteId + " td.td_dni").text(paciente.dni);
 
                     $("#response").empty();
