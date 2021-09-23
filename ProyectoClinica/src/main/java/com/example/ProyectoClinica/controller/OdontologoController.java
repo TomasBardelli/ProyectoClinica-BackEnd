@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/odontologo")
+@RequestMapping("/odontologos")
 public class OdontologoController {
 
     OdontologoService odontologoService;
@@ -26,18 +26,18 @@ public class OdontologoController {
         return odontologoService.buscarPorId(id);
     }
 
-    @GetMapping("/list")
+    @GetMapping()
     public List<OdontologoDTO> listOdontologos(){
         return odontologoService.buscarTodos();
     }
 
-    @PostMapping("/add")
+    @PostMapping("/registrar")
     public ResponseEntity<OdontologoDTO> agregarOdontologo(@RequestBody OdontologoDTO odontologo){
         odontologoService.guardarOdontologo(odontologo);
         return ResponseEntity.ok(null);
     }
 
-    @PutMapping("/update")
+    @PutMapping()
     public ResponseEntity<OdontologoDTO> updatearOdontologo(@RequestBody OdontologoDTO odontologo){
         odontologoService.updateOdontologo(odontologo);
         return ResponseEntity.ok(null);

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/paciente")
+@RequestMapping("/pacientes")
 public class PacienteController {
     PacienteService pacienteService;
     @Autowired
@@ -22,17 +22,17 @@ public class PacienteController {
         return pacienteService.buscarPorId(id);
     }
 
-    @GetMapping("/list")
+    @GetMapping()
     public List<PacienteDTO> listPacientes(){
         return pacienteService.buscarTodos();
     }
 
-    @PostMapping("/add")
+    @PostMapping("/registrar")
     public ResponseEntity<PacienteDTO> agregarPaciente(@RequestBody PacienteDTO paciente){
         pacienteService.guardarPaciente(paciente);
         return ResponseEntity.ok(null);
     }
-    @PutMapping("/update")
+    @PutMapping()
     public ResponseEntity<PacienteDTO> updatearPaciente(@RequestBody PacienteDTO paciente){
         pacienteService.guardarPaciente(paciente);
         return ResponseEntity.ok(null);
