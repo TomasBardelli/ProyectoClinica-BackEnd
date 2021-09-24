@@ -1,9 +1,9 @@
 package com.example.ProyectoClinica.repository;
 
-import com.example.ProyectoClinica.model.Domicilio;
+import com.example.ProyectoClinica.model.Turno;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DomicilioRepository extends JpaRepository<Domicilio,Long> {
+public interface TurnoRepository extends JpaRepository<Turno,Long> {
 }

@@ -24,4 +24,19 @@ public class Odontologo {
     @OneToMany(mappedBy = "odontologo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Paciente> pacientes;
 
+    public Odontologo(String apellido, String nombre, String matricula) {
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.matricula = matricula;
+    }
+
+    public Odontologo(Long id, String apellido, String nombre, String matricula) {
+        this.id = id;
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.matricula = matricula;
+    }
+    public Odontologo() {
+
+    }
 }

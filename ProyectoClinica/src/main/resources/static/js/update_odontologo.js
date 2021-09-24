@@ -34,6 +34,7 @@ $(document).ready(function(){
                     $("#response").empty();
                     $("#response").append(successAlert);
                     $("#response").css({"display": "block"});
+                    console.log(response)
                 },
 
                 error: function (response) {

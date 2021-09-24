@@ -1,63 +1,45 @@
 package com.example.ProyectoClinica.service;
 
 
-import com.example.ProyectoClinica.model.DTO.OdontologoDTO;
 import com.example.ProyectoClinica.model.DTO.PacienteDTO;
-import com.example.ProyectoClinica.model.Odontologo;
 import com.example.ProyectoClinica.model.Paciente;
 import com.example.ProyectoClinica.repository.PacienteRepository;
 import com.example.ProyectoClinica.service.interfaces.PacienteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class PacienteServiceImp implements PacienteService {
-    @Autowired
+
     private PacienteRepository pacienteRepository;
     @Autowired
-    private ObjectMapper objectMapper;
-    @Autowired
-    private ModelMapper modelMapper;
-
-
-    @Override
-    public List<PacienteDTO> buscarTodos() {
-        List<Paciente> pacientes = pacienteRepository.findAll();
-        Type listType = new TypeToken<List<PacienteDTO>>(){}.getType();
-        List<PacienteDTO> pacientesDTO = modelMapper.map(pacientes,listType);
-        return pacientesDTO;
+    public PacienteServiceImp(PacienteRepository pacienteRepository) {
+        this.pacienteRepository = pacienteRepository;
     }
 
     @Override
-    public PacienteDTO buscarPorId(Long id) {
-        Optional<Paciente> found = pacienteRepository.findById(id);
-        return objectMapper.convertValue(found, PacienteDTO.class);
+    public List<Paciente> buscarTodos() {
+        return pacienteRepository.findAll();
     }
 
     @Override
-    public String guardarPaciente(PacienteDTO paciente) {
-        Paciente paciente1 = objectMapper.convertValue(paciente,Paciente.class);
-        pacienteRepository.save(paciente1);
-        return "Se creo paciente con id: "+paciente.getId();
+    public Optional<Paciente> buscarPorId(Long id) {
+        return pacienteRepository.findById(id);
     }
 
     @Override
-    public String updatePaciente(PacienteDTO paciente) {
-        if (pacienteRepository.findById(paciente.getId()).isPresent()){
-            Paciente paciente1 = objectMapper.convertValue(paciente,Paciente.class);
-            pacienteRepository.save(paciente1);
-            return "Se modifico el paciente con id: "+ paciente.getId();
-        }
-        else {
-            return "No se encontro el paciente con el ID ingresado";
-        }
+    public Paciente guardarPaciente(Paciente paciente) {
+        return pacienteRepository.save(paciente);
+    }
+
+    @Override
+    public Paciente updatePaciente(Paciente paciente) {
+        return pacienteRepository.save(paciente);
     }
 
     @Override
@@ -70,3 +52,6 @@ public class PacienteServiceImp implements PacienteService {
         }
     }
 }
+//    Tengo un "if (paciente.getFechaIngreso() == null) {
+//        paciente.setFechaIngreso(new Date());
+//        }" en el service
