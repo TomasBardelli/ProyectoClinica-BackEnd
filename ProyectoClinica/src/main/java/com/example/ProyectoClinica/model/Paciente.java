@@ -1,5 +1,6 @@
 package com.example.ProyectoClinica.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table
+@Table (name = "pacientes")
 @Getter
 @Setter
 public class Paciente {
@@ -25,10 +26,8 @@ public class Paciente {
     private String dni;
     private Date fechaIngreso;
 
-
-
-
-    @OneToMany(mappedBy = "paciente", cascade = CascadeType.MERGE, orphanRemoval = true)
+    @JsonIgnore
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
     private List<Turno> turnos;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)

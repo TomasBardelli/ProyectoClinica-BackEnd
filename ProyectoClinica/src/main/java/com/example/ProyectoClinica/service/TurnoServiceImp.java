@@ -1,5 +1,6 @@
 package com.example.ProyectoClinica.service;
 
+import com.example.ProyectoClinica.exceptions.ResourseNotFoundException;
 import com.example.ProyectoClinica.model.Turno;
 import com.example.ProyectoClinica.repository.TurnoRepository;
 import com.example.ProyectoClinica.service.interfaces.TurnoService;
@@ -42,7 +43,12 @@ public class TurnoServiceImp implements TurnoService {
     }
 
     @Override
-    public void deleteTurno(Long id) {
-        turnoRepository.deleteById(id);
+    public void deleteTurno(Long id) throws ResourseNotFoundException {
+        if (turnoRepository.findById(id).isPresent()){
+            turnoRepository.deleteById(id);
+        }
+        else {
+            throw new ResourseNotFoundException("No se encontro el turno con el ID ingresado" + id);
+        }
     }
 }

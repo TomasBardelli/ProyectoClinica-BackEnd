@@ -1,6 +1,7 @@
 package com.example.ProyectoClinica.controller;
 
 
+import com.example.ProyectoClinica.exceptions.ResourseNotFoundException;
 import com.example.ProyectoClinica.model.Paciente;
 import com.example.ProyectoClinica.model.Turno;
 import com.example.ProyectoClinica.service.interfaces.TurnoService;
@@ -47,7 +48,7 @@ public class TurnoController {
         return response;
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> borrarTurno(@PathVariable Long id){
+    public ResponseEntity<String> borrarTurno(@PathVariable Long id) throws ResourseNotFoundException {
         ResponseEntity<String> response;
         if (turnoService.buscarPorId(id).isPresent()) { // Esta validacion no esta en el enunciado del ejericio, pero se las dejo para que la tengan.
             turnoService.deleteTurno(id);

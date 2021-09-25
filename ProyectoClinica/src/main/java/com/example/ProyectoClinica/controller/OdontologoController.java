@@ -1,5 +1,6 @@
 package com.example.ProyectoClinica.controller;
 
+import com.example.ProyectoClinica.exceptions.ResourseNotFoundException;
 import com.example.ProyectoClinica.model.Odontologo;
 import com.example.ProyectoClinica.service.interfaces.OdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,17 +51,10 @@ public class OdontologoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> borrarOdontologo (@PathVariable Long id){
-        ResponseEntity<String> response = null;
+    public ResponseEntity<String> borrarOdontologo (@PathVariable Long id) throws ResourseNotFoundException {
+        odontologoService.deleteOdontologo(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
 
-        if (odontologoService.buscarPorId(id).isPresent()) {
-            odontologoService.deleteOdontologo(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-
-        return response;
     }
 
 

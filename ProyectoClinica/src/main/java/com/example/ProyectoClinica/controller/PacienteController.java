@@ -1,5 +1,6 @@
 package com.example.ProyectoClinica.controller;
 
+import com.example.ProyectoClinica.exceptions.ResourseNotFoundException;
 import com.example.ProyectoClinica.model.DTO.PacienteDTO;
 import com.example.ProyectoClinica.model.Odontologo;
 import com.example.ProyectoClinica.model.Paciente;
@@ -48,16 +49,8 @@ public class PacienteController {
         return response;
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> borrarPaciente (@PathVariable Long id){
-        ResponseEntity<String> response = null;
-
-        if (pacienteService.buscarPorId(id).isPresent()) {
-            pacienteService.deletePaciente(id);
-            response = ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
-        } else {
-            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-
-        return response;
+    public ResponseEntity<String> borrarPaciente (@PathVariable Long id) throws ResourseNotFoundException {
+        pacienteService.deletePaciente(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Eliminado");
     }
 }

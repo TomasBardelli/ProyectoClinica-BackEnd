@@ -1,5 +1,6 @@
 package com.example.ProyectoClinica.service;
 
+import com.example.ProyectoClinica.exceptions.ResourseNotFoundException;
 import com.example.ProyectoClinica.model.DTO.OdontologoDTO;
 import com.example.ProyectoClinica.model.Odontologo;
 import com.example.ProyectoClinica.repository.OdontologoRepository;
@@ -42,13 +43,13 @@ public class OdontologoServiceImp implements OdontologoService {
     }
 
     @Override
-    public String deleteOdontologo(Long id) {
+    public String deleteOdontologo(Long id) throws ResourseNotFoundException {
         if (odontologoRepository.findById(id).isPresent()){
             odontologoRepository.deleteById(id);
             return "Se elimino el odontologo con id: "+ id;
         }
         else {
-            return "No se encontro el odontologo con el ID ingresado";
+            throw new ResourseNotFoundException("No se encontro el odontologo con el ID ingresado" + id);
         }
     }
 }

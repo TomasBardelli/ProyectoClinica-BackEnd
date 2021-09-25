@@ -1,5 +1,6 @@
 package com.example.ProyectoClinica.service.interfaces;
 
+import com.example.ProyectoClinica.exceptions.ResourseNotFoundException;
 import com.example.ProyectoClinica.model.Paciente;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public interface PacienteService {
     Optional<Paciente> buscarPorId(Long id);
     Paciente guardarPaciente(Paciente paciente);
     Paciente updatePaciente(Paciente paciente);
-    String deletePaciente(Long id);
+    String deletePaciente(Long id) throws ResourseNotFoundException;
 }
