@@ -14,12 +14,28 @@ public class Domicilio {
     @SequenceGenerator(name = "domicilio_sequence", sequenceName = "domicilio_sequence")
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "domicilio_sequence")
     private Long id;
-    private String nombreCalle;
-    private Integer numCalle;
-    private Integer codPostal;
+    private String calle;
+    private String numero;
+    private String localidad;
+    private String provincia;
 
-    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JoinColumn(name = "paciente_id")
-    private Paciente paciente;
 
+
+    public Domicilio(Long id, String calle, String numero, String localidad, String provincia) {
+        this.id = id;
+        this.calle = calle;
+        this.numero = numero;
+        this.localidad = localidad;
+        this.provincia = provincia;
+    }
+    public Domicilio( String calle, String numero, String localidad, String provincia) {
+        this.calle = calle;
+        this.numero = numero;
+        this.localidad = localidad;
+        this.provincia = provincia;
+    }
+
+
+    public Domicilio() {
+    }
 }

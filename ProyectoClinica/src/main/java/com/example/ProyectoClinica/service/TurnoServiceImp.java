@@ -6,6 +6,7 @@ import com.example.ProyectoClinica.service.interfaces.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -29,6 +30,9 @@ public class TurnoServiceImp implements TurnoService {
 
     @Override
     public Turno guardarTurno(Turno turno) {
+        if (turno.getDate()==null){
+            turno.setDate(new Date());
+        }
         return turnoRepository.save(turno);
     }
 

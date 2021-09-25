@@ -21,8 +21,9 @@ public class Odontologo {
     private String nombre;
     private String matricula;
 
-    @OneToMany(mappedBy = "odontologo", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Paciente> pacientes;
+
+    @OneToMany(mappedBy = "odontologo", cascade = CascadeType.MERGE, orphanRemoval = true)
+    private List<Turno> turnos;
 
     public Odontologo(String apellido, String nombre, String matricula) {
         this.apellido = apellido;

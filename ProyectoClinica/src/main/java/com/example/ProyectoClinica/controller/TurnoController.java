@@ -1,6 +1,7 @@
 package com.example.ProyectoClinica.controller;
 
 
+import com.example.ProyectoClinica.model.Paciente;
 import com.example.ProyectoClinica.model.Turno;
 import com.example.ProyectoClinica.service.interfaces.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ public class TurnoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Turno> buscarTurnoPorId(@PathVariable Long id){
-        turnoService.buscarPorId(id);
-        return ResponseEntity.ok(null);
+        Turno turno = turnoService.buscarPorId(id).orElse(null);
+        return ResponseEntity.ok(turno);
     }
     @GetMapping()
     public ResponseEntity<List<Turno>> buscarTodos(){
@@ -36,7 +37,14 @@ public class TurnoController {
     }
     @PutMapping()
     public ResponseEntity<Turno> actualizarTurno(@RequestBody Turno turno){
-        return ResponseEntity.ok(turnoService.updateTurno(turno));
+        ResponseEntity<Turno> response = null;
+
+        if (turno.getId() != null && turnoService.buscarPorId(turno.getId()).isPresent())
+            response = ResponseEntity.ok(turnoService.updateTurno(turno));
+        else
+            response = ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+
+        return response;
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> borrarTurno(@PathVariable Long id){

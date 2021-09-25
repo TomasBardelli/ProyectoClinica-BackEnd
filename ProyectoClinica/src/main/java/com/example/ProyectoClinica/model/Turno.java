@@ -23,6 +23,7 @@ public class Turno {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
+
     private Date date;
 
     public Turno(){
@@ -30,6 +31,13 @@ public class Turno {
     }
 
     public Turno(Odontologo odontologo, Paciente paciente, Date date) {
+        this.odontologo = odontologo;
+        this.paciente = paciente;
+        this.date = date;
+    }
+
+    public Turno(Long id, Odontologo odontologo, Paciente paciente, Date date) {
+        this.id = id;
         this.odontologo = odontologo;
         this.paciente = paciente;
         this.date = date;

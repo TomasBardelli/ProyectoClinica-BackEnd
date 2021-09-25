@@ -10,6 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +35,9 @@ public class PacienteServiceImp implements PacienteService {
 
     @Override
     public Paciente guardarPaciente(Paciente paciente) {
+        if(paciente.getFechaIngreso()==null){
+            paciente.setFechaIngreso(new Date());
+        }
         return pacienteRepository.save(paciente);
     }
 
@@ -52,6 +56,4 @@ public class PacienteServiceImp implements PacienteService {
         }
     }
 }
-//    Tengo un "if (paciente.getFechaIngreso() == null) {
-//        paciente.setFechaIngreso(new Date());
-//        }" en el service
+
