@@ -31,9 +31,6 @@ public class TurnoServiceImp implements TurnoService {
 
     @Override
     public Turno guardarTurno(Turno turno) {
-        if (turno.getDate()==null){
-            turno.setDate(new Date());
-        }
         return turnoRepository.save(turno);
     }
 

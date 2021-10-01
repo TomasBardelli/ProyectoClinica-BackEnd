@@ -8,19 +8,17 @@ import java.util.Date;
 
 @Entity
 @Table(name = "turnos")
-@Getter
-@Setter
 public class Turno {
     @Id
     @SequenceGenerator(name = "turno_sequence", sequenceName = "turno_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "turno_sequence")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "odontologo_id")
     private Odontologo odontologo;
 
-    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
@@ -36,5 +34,35 @@ public class Turno {
         this.date = date;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Odontologo getOdontologo() {
+        return odontologo;
+    }
+
+    public void setOdontologo(Odontologo odontologo) {
+        this.odontologo = odontologo;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 }

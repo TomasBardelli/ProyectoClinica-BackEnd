@@ -1,8 +1,6 @@
 package com.example.ProyectoClinica.controller;
 
 import com.example.ProyectoClinica.exceptions.ResourseNotFoundException;
-import com.example.ProyectoClinica.model.DTO.PacienteDTO;
-import com.example.ProyectoClinica.model.Odontologo;
 import com.example.ProyectoClinica.model.Paciente;
 import com.example.ProyectoClinica.service.interfaces.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;

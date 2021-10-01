@@ -1,12 +1,9 @@
 package com.example.ProyectoClinica.service;
 
 import com.example.ProyectoClinica.exceptions.ResourseNotFoundException;
-import com.example.ProyectoClinica.model.DTO.OdontologoDTO;
 import com.example.ProyectoClinica.model.Odontologo;
 import com.example.ProyectoClinica.repository.OdontologoRepository;
 import com.example.ProyectoClinica.service.interfaces.OdontologoService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
